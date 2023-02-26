@@ -101,7 +101,7 @@ def detail_siswa(req,id_siswa):
 
     for item in each:
         points -= item["point"]
-    if points < 50:
+    if points <= 50:
        pesan = "paggil orang tua"
     elif points > 50:
  
