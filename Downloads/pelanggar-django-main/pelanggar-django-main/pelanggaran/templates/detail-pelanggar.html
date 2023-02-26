@@ -1,0 +1,95 @@
+{%extends 'base.html' %} {%block content%}
+<!-- navbar start -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark py-3 text-light">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light fw-bolder" href="{%url 'homepage'%}"
+      >SMKN4
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light"
+            aria-current="page"
+            href="{%url 'homepage'%}"
+            >Home</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- navbar end -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <div class="card bg-warning">
+        <div class="card-body">
+          {% if punishment %}
+          <div class="alert alert-danger">{{ punishment }}</div>
+          {% endif %}
+          <h5 class="card-title text-dark fw-bold">Nama: {{nama}}</h5>
+          <h6 class="card-text text-dark fw-bold">Kelas: {{nama.kelas}}</h6>
+          <!-- <div
+            class="progress"
+            role="progressbar"
+            aria-label="Example with label"
+            aria-valuenow="{{points}}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div class="progress-bar" style="width: {{points}}%">
+              {{points}}%
+            </div>
+          </div> -->
+          <h1>{{status}}</h1>
+          <h4 class="small font-weight-bold">
+            Sisa Point <span class="float-right">{{points}}/100</span>
+          </h4>
+          <div class="progress mb-4">
+            <div
+              class="progress-bar bg-danger"
+              role="progressbar"
+              style="width: {{points}}%"
+              aria-valuenow="{{points}}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+          <p class="card-text">jumlah pelanggaran : {{total}} kali</p>
+          <p class="car-text">
+            Atas tindakan Yang {{nama}} lakukan maka mendapatkan hukuman berupa
+            {{pesan}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%for p in catatan%}
+  <div class="list-group" id="dataList">
+    <div
+      class="list-group-item list-group-item-action flex-column align-items-start"
+    >
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1 fs-5">{{p.pelanggaran}}</h5>
+        <small>{{p.tanggal}}</small>
+      </div>
+      <p class="mb-1 fs-6">penulis: {{p.user}}</p>
+      <small>Points:{{p.pelanggaran.point}}</small>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+{%endblock%}

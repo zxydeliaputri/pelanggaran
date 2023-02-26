@@ -1,0 +1,108 @@
+{%extends 'base.html' %} {%block content%}
+<!-- navbar start -->
+
+<!-- navbar end -->
+<div class="container">
+<!-- <div class="row">
+
+        <h4 class="bg-dark fw-bolder text-light  card-header" >Offender SMKN 4 Tasikmalaya</h4>
+   
+    
+  
+             <div class="col-lg-3 col-6 mt-3">
+          
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{total}}</h3>
+
+                <p>Pelanggar</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+             <div class="col-lg-3 col-6 mt-3">
+          
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{user}}</h3>
+
+                <p>Petugas</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                 info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+        
+
+  </div> -->
+<div class="row">
+  <div class="col-md-12 col-sm-12 pt-4 pb-3">
+    <div class="card ">
+      <h5 class="card-header bg-dark text-light">Data Offender</h5>
+      <div class="card-body">
+        <div class="card-title ">pelanggar : <span class="badge bg-info text-ligt">{{total}}</span></div>
+        
+        <table class="table mt-3 table-striped pb-4 display nowrap" id="dataTable" style="width: 100%;">
+      <thead class="bg-dark  text-light fw-bold text-center upper">
+        <tr>
+          <th>Nama Siswa</th>
+          <th >Kelas</th>
+          <th>pelanggaran</th>
+          <th>tanggal</th>
+          <th >penulis</th>
+    
+        </tr>
+      </thead>
+      <tbody class="bg-light py-3">
+        <tr {%for p in langgar%}>
+          <td><a href="/detail/{{p.siswa.id}}" class="text-decoration-none">{{p.siswa.nama_siswa}}</a></td>
+          <td >{{p.siswa.kelas}}</td>
+          <td >{{p.pelanggaran.jenis_pelanggaran}}</td>
+          <td>{{p.tanggal}}</td>
+          <td >{{p.user}}</td>
+         
+        </tr {%endfor%}>
+      </tbody>
+    </table>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+<!-- {%for p in langgar%}
+<div class="list-group"  id="dataList"  >
+  <a href="/detail/{{p.siswa.id}}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{p.siswa.nama_siswa}}</h5>
+      <small>{{p.tanggal}}</small>
+    </div>
+    <p class="mb-1">{{p.siswa.kelas}}</p>
+    <small>{{p.pelanggaran}}</small>
+    
+  </a >
+
+</div  >
+{%endfor%} -->
+ <a
+      id="top"
+      href="{%url 'tambah_pelanggar'%}"
+      class="fixed-nav bg-primary"
+    >
+     <i class="fa-solid fa-plus fs-4"></i>
+    </a>
+</div>
+</div>
+{%endblock%}
